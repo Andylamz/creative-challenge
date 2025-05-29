@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: monospace;
+  overflow: hidden;
+  background-color: #111;
+}
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #111;
+  animation: lighting 3s linear 10s forwards;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.opening {
+  font-size: 60px;
+  color: #fff;
+  font-family: monospace;
+  font-weight: 800;
+  position: relative;
+  margin: 50vh auto;
+  width: 15ch;
+  /* background-color: pink; */
+  overflow: hidden;
+  animation: gone 4s linear 5.5s forwards;
+}
+.opening::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #111;
+  animation: w 5s steps(15) forwards;
+}
+@keyframes w {
+  0% {
+    left: 0ch;
+  }
+  100% {
+    left: 15ch;
+  }
+}
+@keyframes gone {
+  0%,
+  20%,
+  40%,
+  60%,
+  80% {
+    color: white;
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    color: #111;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+@keyframes lighting {
+  20%,
+  40%,
+  60%,
+  80% {
+    background-color: #fff;
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    background-color: #111;
+  }
+  100% {
+    background-color: #111;
+    display: none;
+  }
+}
+/* ---------------------content-------------------------- */
+.content {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(3.5deg, #4ffa94, #1f4f30, #111 49%);
+  /* background: linear-gradient(#04012e, #675cfc); */
+  /* background-color: #111; */
+  z-index: -10;
+  transition: all 2s;
+  animation: appear 3s linear 13s 1;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* sky color */
+.sky-color {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(#01000f, #675cfc);
+  z-index: -9;
+  transition: all 2s;
+  opacity: 1;
+}
+/* hills */
+
+.hills-1,
+.hills-2,
+.hills-3 {
+  width: 100vw;
+  height: 336px;
+  position: absolute;
+  bottom: 0px;
+  background: url(hills.svg) repeat;
+  animation: hills-move 30s linear infinite;
+  opacity: 1;
+}
+.hills-2 {
+  bottom: 150px;
+  background: url(hills2.svg) repeat;
+  animation: hills2-move 50s linear infinite;
+  z-index: -5;
+}
+.hills-3 {
+  bottom: 220px;
+  background: url(hills.svg) repeat;
+  animation: hills3-move 100s linear infinite;
+  z-index: -6;
+  opacity: 0.7;
+}
+@keyframes hills-move {
+  100% {
+    background-position-x: -3840px;
+  }
+}
+@keyframes hills2-move {
+  100% {
+    background-position-x: -3840px;
+  }
+}
+@keyframes hills3-move {
+  100% {
+    background-position-x: -3840px;
+  }
+}
+/* snow */
+.snow,
+.snow::before,
+.snow::after {
+  content: "";
+  background: radial-gradient(3px 3px at 150px 50px, #fff, transparent),
+    radial-gradient(4px 4px at 200px 150px, #fff, transparent),
+    radial-gradient(5px 5px at 300px 80px, #fff, transparent),
+    radial-gradient(6px 6px at 400px 130px, #fff, transparent),
+    radial-gradient(3px 3px at 540px 480px, #fff, transparent),
+    radial-gradient(4px 4px at 50px 230px, #fff, transparent),
+    radial-gradient(5px 5px at 120px 680px, #fff, transparent),
+    radial-gradient(6px 6px at 223px 180px, #fff, transparent),
+    radial-gradient(3px 3px at 700px 300px, #fff, transparent),
+    radial-gradient(4px 4px at 550px 250px, #fff, transparent),
+    radial-gradient(5px 5px at 650px 630px, #fff, transparent),
+    radial-gradient(6px 6px at 23px 100px, #fff, transparent),
+    radial-gradient(3px 3px at 125px 199px, #fff, transparent),
+    radial-gradient(4px 4px at 78px 50px, #fff, transparent),
+    radial-gradient(5px 5px at 222px 120px, #fff, transparent),
+    radial-gradient(6px 6px at 300px 70px, #fff, transparent);
+  background-size: 800px 800px;
+  position: absolute;
+  inset: -800px 0 0 0;
+  animation: snow 5s linear infinite;
+  z-index: -4;
+}
+.snow::before {
+  margin: -390px;
+  opacity: 0.5;
+  animation: 8s;
+  animation-delay: -1.5s;
+}
+.snow::after {
+  margin: -130px;
+  opacity: 0.8;
+  animation-duration: 10s;
+}
+@keyframes snow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(800px);
+  }
+}
+/* bear */
+.polar-bear {
+  position: absolute;
+  bottom: 0;
+  width: 200px;
+  height: 100px;
+  background: url(bear.png) no-repeat;
+  animation: bear 1.5s steps(8) infinite, bear-move 7s linear 15s forwards;
+}
+@keyframes bear {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -1600px 0;
+  }
+}
+@keyframes bear-move {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+/* meteor */
+circle[fill="white"] {
+  opacity: 0;
+  transition: all 2s;
+}
+line[stroke="url(#linearGradient)"] {
+  opacity: 0;
+  transition: all 2s;
+}
+.meteor-1 {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  animation: meteor 4s linear infinite;
+}
+.meteor-2 {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  animation: meteor 1s linear infinite;
+}
+.meteor-3 {
+  position: absolute;
+  top: 60;
+  left: 50%;
+  animation: meteor 3s linear 2s infinite;
+}
+.meteor-4 {
+  position: absolute;
+  top: 60;
+  left: 70%;
+  animation: meteor 2s linear 1s infinite;
+}
+.meteor-5 {
+  position: absolute;
+  top: 100;
+  left: 60%;
+  animation: meteor 1.5s linear 1s infinite;
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(330deg) translateX(-1000px);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(330deg) translateX(0px);
+    opacity: 0;
+  }
+}
+.sun {
+  fill: rgb(255, 204, 0);
+  transition: all 2s;
+}
+.sun-light {
+  filter: drop-shadow(0 0 40px rgb(255, 204, 0));
+  opacity: 1;
+  transition: all 2s;
+}
+/* ----------------------label - effect on/off--------------------*/
+label {
+  position: absolute;
+  left: 72px;
+  top: 75px;
+  padding: 20px 0;
+  /* background-color: pink; */
+  opacity: 0;
+}
+#click-sun {
+  position: absolute;
+  transform: scale(8);
+  left: 63px;
+  top: 63px;
+  opacity: 0;
+}
+#click-sun:checked ~ .m1 circle[fill="white"],
+#click-sun:checked ~ .m1 line[stroke="url(#linearGradient)"] {
+  opacity: 1;
+}
+
+#click-sun:checked ~ .sun-main .sun-light {
+  /* opacity: 0; */
+  transform: scale(0.7);
+  filter: drop-shadow(0 0 40px #f3f5f0);
+}
+#click-sun:checked ~ .sun-main .sun {
+  fill: #f3f5f0;
+  transform: scale(0.7);
+}
+#click-sun:checked ~ .sky-color {
+  opacity: 0;
+}
+#click-sun:checked {
+  transform: scale(5);
+}
